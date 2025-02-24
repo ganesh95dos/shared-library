@@ -1,3 +1,3 @@
-def hello(){
-  echo "Hello Dosto"
+def call() {
+    return "Hello Dosto"
 }
