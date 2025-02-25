@@ -1,10 +1,10 @@
-def call(String DockerHubUser, String ProjectName, String ImageTag ){
- echo 'Hello, this is building the code'
- //Run the Docker build command
-    sh "docker build -t ${ProjectName}:${ImageTag} ."
+def call(String dockerHubUser, String ProjectName, String ImageTag ){
+withCredentials([usernamePassword(
+                    credentialsId: "Jenkins-app-note-django", 
+                    passwordVariable: "dockerHubPass", 
+                    usernameVariable: "dockerHubUser"
+                )]){
+ sh "docker build -t ${dockerHubUser}/${ProjectName}:${ImageTag} ."
+ sh 'docker image prune -f'}
  
- // List images after building
-    sh 'docker images'
- // Remove untagged (dangling) images
-    sh 'docker image prune -f'
 }
