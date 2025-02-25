@@ -1,3 +1,3 @@
-def call(){
+def call() {
   sh "docker-compose up -d"
 }
